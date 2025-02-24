@@ -1,14 +1,13 @@
 * {
   box-sizing: border-box;
-  margin: 10px;
+  margin: 5px;
 }
 
 body {
   color: var(--secondary);
   background-color: var(--body);
-  /* font-family: Arial, Helvetica, sans-serif; */
   font-size: clamp(1rem, 1.5vw, 5rem);
-  margin: 4rem;
+  margin: 5rem 8rem;
   color: var(--font-primary);
 }
 
@@ -17,16 +16,31 @@ h1 {
   margin-bottom: 30px;
 }
 
+p {
+  font-size: clamp(.7rem, 1.2vw, 5rem);
+}
+
+ul {
+  font-size: clamp(.7rem, 1.2vw, 5rem);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 button {
   border: none;
-  background-color: var(--secondary);
-  color: var(--font-secondary-fixed);
+  background-color: var(--complementary);
+  color: var(--secondary);
   font-size: clamp(.8rem, 1vw, 4rem);
   /* padding: 3% 7%; */
   padding: 10px 15px;
   margin: 5px 10px;
   border-radius: 10px;
   transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.03);
 }
 
 .kitchen-sort-container {
@@ -36,10 +50,28 @@ button {
   margin: 0 0 40px 0;
 }
 
+.kitchen-btn {
+  background-color: var(--complementary);
+  color: var(--secondary);
+}
+
+.kitchen-btn:hover {
+  border: solid 2px var(--secondary);
+}
+
+.time-btn {
+  background-color: var(--tri);
+  color: var(--secondary);
+}
+
+.time-btn:hover {
+  border: solid 2px var(--secondary);
+}
+
 .recipe-card-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 23%, 340px), 1fr));
-  gap: .8em;
+  gap: .3em;
 }
 
 .recipe-card {
@@ -47,6 +79,12 @@ button {
   padding: 20px;
   background-color: var(--font-secondary);
   border-radius: 8px;
+  transition: transform ease .4s;
+}
+
+.recipe-card:hover {
+  border: solid 2px var(--secondary);
+  transform: scale(1.03);
 }
 
 .food-img-bg {
@@ -65,4 +103,8 @@ button {
 
 .food-card-text {
   overflow: hidden;
+}
+
+.bold {
+  font-weight: bolder;
 }

@@ -8,15 +8,19 @@
   --secondary-hover: rgb(53, 102, 53);
   --secondary-fixed: rgb(43, 83, 43);
 
-  --complementary: pink;
-  --complementary-hover: rgb(252, 204, 212);
+  --complementary: #CCFFE2;
+  --complementary-hover: ;
   --complementary-fixed: ;
 
   --aditional: lightgray;
   --aditional-hover: ;
   --aditional-fixed: ;
 
-  --body: #EDEDED;
+  --tri: #FFECEA;
+  --tri-hover: #FF6589;
+  --tri-fixed: ;
+
+  --body: #F5F5F5;
   --body-hover: ;
   --body-fixed: ;
 
@@ -67,8 +71,8 @@
 }
 
 body {
-  font-family: "Bebas Neue", serif;
-  font-weight: 400;
-  letter-spacing: 3px;
+  font-family: "Jost", serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
   font-style: normal;
 }
