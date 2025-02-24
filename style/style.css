@@ -53,6 +53,7 @@ button:hover {
 .kitchen-btn {
   background-color: var(--complementary);
   color: var(--secondary);
+  border: solid 2px transparent;
 }
 
 .kitchen-btn:hover {
@@ -62,9 +63,15 @@ button:hover {
 .time-btn {
   background-color: var(--tri);
   color: var(--secondary);
+  border: solid 2px transparent;
 }
 
 .time-btn:hover {
+  border: solid 2px var(--secondary);
+}
+
+.time-btn-active {
+  background-color: blueviolet;
   border: solid 2px var(--secondary);
 }
 
@@ -80,11 +87,12 @@ button:hover {
   background-color: var(--font-secondary);
   border-radius: 8px;
   transition: transform ease .4s;
+  border: solid 2px transparent;
 }
 
 .recipe-card:hover {
   border: solid 2px var(--secondary);
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 .food-img-bg {
