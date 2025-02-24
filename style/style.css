@@ -7,7 +7,7 @@ body {
   color: var(--secondary);
   background-color: var(--body);
   font-size: clamp(1rem, 1.5vw, 5rem);
-  margin: 5rem 8rem;
+  margin: 50px 6%;
   color: var(--font-primary);
 }
 
