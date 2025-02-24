@@ -65,3 +65,10 @@
   --font-aditional: ;
   --font-aditional-hover: ;
 }
+
+body {
+  font-family: "Bebas Neue", serif;
+  font-weight: 400;
+  letter-spacing: 3px;
+  font-style: normal;
+}

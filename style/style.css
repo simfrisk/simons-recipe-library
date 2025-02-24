@@ -1,25 +1,29 @@
 * {
   box-sizing: border-box;
+  margin: 10px;
 }
 
 body {
   color: var(--secondary);
   background-color: var(--body);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: clamp(1rem, 1.8vw, 5rem);
-  margin-left: clamp(1rem, 4vw, 10rem);
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-size: clamp(1rem, 1.5vw, 5rem);
+  margin: 4rem;
+  color: var(--font-primary);
 }
 
 h1 {
   color: var(--secondary);
+  margin-bottom: 30px;
 }
 
 button {
-  font-size: 1rem;
   border: none;
   background-color: var(--secondary);
   color: var(--font-secondary-fixed);
-  padding: 7px 15px;
+  font-size: clamp(.8rem, 1vw, 4rem);
+  /* padding: 3% 7%; */
+  padding: 10px 15px;
   margin: 5px 10px;
   border-radius: 10px;
   transition: background-color 0.3s ease, transform 0.3s ease;
@@ -27,24 +31,20 @@ button {
 
 .kitchen-sort-container {
   display: flex;
+  flex-wrap: wrap;
   gap: 3em;
-  margin-bottom: 30px;
+  margin: 0 0 40px 0;
 }
 
 .recipe-card-container {
-  display: flex;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  gap: 1em;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 23%, 340px), 1fr));
+  gap: .8em;
 }
 
 .recipe-card {
-  scroll-snap-align: start;
-  flex-shrink: 0;
-  width: clamp(10rem, 20vw, 25rem);
-  height: clamp(22rem, 40vw, 50rem);
   gap: 2em;
-  padding: 10px;
+  padding: 20px;
   background-color: var(--font-secondary);
   border-radius: 8px;
 }
@@ -52,7 +52,6 @@ button {
 .food-img-bg {
   background-color: var(--aditional);
   padding: 10px;
-  height: clamp(10rem, 20vw, 30rem);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,8 +59,8 @@ button {
 }
 
 .img-food-card {
-  height: 100%;
   object-fit: cover;
+  width: 100%;
 }
 
 .food-card-text {
