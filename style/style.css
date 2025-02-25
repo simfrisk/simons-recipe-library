@@ -60,6 +60,12 @@ button:hover {
   border: solid 2px var(--secondary);
 }
 
+.kitchen-btn-active {
+  background-color: var(--secondary);
+  color: var(--font-secondary);
+  border: solid 2px var(--secondary);
+}
+
 .time-btn {
   background-color: var(--tri);
   color: var(--secondary);
@@ -71,8 +77,9 @@ button:hover {
 }
 
 .time-btn-active {
-  background-color: blueviolet;
-  border: solid 2px var(--secondary);
+  background-color: var(--tri-hover);
+  color: var(--font-secondary);
+  border: solid 2px var(--tri-hover);
 }
 
 .recipe-card-container {
