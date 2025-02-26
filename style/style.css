@@ -1,4 +1,4 @@
-/* ----- Basic --- Manual Fold ----- */
+/** ----- Basic --- Manual Fold ----- */
 * {
   box-sizing: border-box;
   margin: 5px;
@@ -48,7 +48,7 @@ button:hover {
   font-weight: bolder;
 }
 
-/* ----- Sort section --- Manual Fold ----- */
+/** ----- Sort section --- Manual Fold ----- */
 .kitchen-sort-container {
   display: flex;
   flex-wrap: wrap;
@@ -88,7 +88,7 @@ button:hover {
   border: solid 2px var(--tri-hover);
 }
 
-/* ----- Recipe section --- Manual Fold ----- */
+/** ----- Recipe section --- Manual Fold ----- */
 .recipe-card-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 23%, 340px), 1fr));
@@ -127,15 +127,15 @@ button:hover {
   overflow: hidden;
 }
 
-/* ----- Extra classes --- Manual Fold ----- */
+/** ----- Extra classes --- Manual Fold ----- */
 .hidden {
   display: none;
 }
 
-/* ----- Phone viewport --- Manual Fold ----- */
-@media (max-width: 400px) {
+/** ----- Phone viewport --- Manual Fold ----- */
+@media (max-width: 740px) {
 
-  /* ----- Basic --- Manual Fold ----- */
+  /** ----- Basic --- Manual Fold ----- */
   body {
     margin: 20px 0 0 0;
   }
@@ -155,7 +155,7 @@ button:hover {
     margin: 5px 5px;
   }
 
-  /* ----- Sort section --- Manual Fold ----- */
+  /** ----- Sort section --- Manual Fold ----- */
   .kitchen-sort-container {
     display: flex;
     flex-wrap: wrap;
@@ -163,7 +163,7 @@ button:hover {
     margin: 0 0 0 0;
   }
 
-  /* ----- Recipe section --- Manual Fold ----- */
+  /** ----- Recipe section --- Manual Fold ----- */
   .recipe-card {
     padding: 10px;
   }

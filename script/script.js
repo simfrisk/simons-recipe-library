@@ -1,6 +1,6 @@
-// ----- Sort Kitchen --- Manual Fold -----
+//* ----- Sort Kitchen --- Manual Fold -----
 
-// ----- Sort Kitchen Varibles --- Manual Fold ----- 
+//* ----- Sort Kitchen Varibles --- Manual Fold ----- 
 const allBtn = document.getElementById("all-btn")
 const italyBtn = document.querySelector("#italy-btn")
 const usaBtn = document.querySelector("#usa-btn")
@@ -10,7 +10,7 @@ const italyCard = document.querySelector("#italy-card")
 const usaCard = document.querySelector("#usa-card")
 const asiaCard = document.querySelector("#asia-card")
 
-// ----- Sort Kitchen btn function --- Manual Fold -----
+//* ----- Sort Kitchen btn function --- Manual Fold -----
 allBtn.onclick = () => {
   // Add text to document
 
@@ -55,13 +55,13 @@ asiaBtn.onclick = () => {
   asiaBtn.classList.toggle("kitchen-btn-active")
 }
 
-// ----- Sort Time --- Manual Fold -----
+//* ----- Sort Time --- Manual Fold -----
 
-// ----- Sort Time Varibles --- Manual Fold -----
+//* ----- Sort Time Varibles --- Manual Fold -----
 const decendBtn = document.querySelector("#decend-btn")
 const acendBtn = document.querySelector("#acend-btn")
 
-// ----- Sort Time Varibles --- Manual Fold -----
+//* ----- Sort Time Varibles --- Manual Fold -----
 decendBtn.onclick = () => {
   acendBtn.classList.remove("time-btn-active")
   if (decendBtn.classList.contains("time-btn-active")) {
