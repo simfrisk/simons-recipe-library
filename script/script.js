@@ -1,84 +1,51 @@
-//* ----- Sort Kitchen --- Manual Fold -----
+//* ----- Sort Kitchen btn  --- Manual Fold -----
 
-//* ----- Sort Kitchen Varibles --- Manual Fold ----- 
-const allBtn = document.getElementById("all-btn")
+const main = document.querySelector("#temp-placeholder")
+const mexicoBtn = document.querySelector("#mexico-btn")
 const italyBtn = document.querySelector("#italy-btn")
 const usaBtn = document.querySelector("#usa-btn")
 const asiaBtn = document.querySelector("#asia-btn")
+const mexicoMessage = "mexico"
+const italyMessage = "Italy"
+const usaMessage = "Usa"
+const asiaMessage = "Asia"
 
-const italyCard = document.querySelector("#italy-card")
-const usaCard = document.querySelector("#usa-card")
-const asiaCard = document.querySelector("#asia-card")
-
-//* ----- Sort Kitchen btn function --- Manual Fold -----
-allBtn.onclick = () => {
-  // Add text to document
-
-  italyBtn.classList.remove("kitchen-btn-active")
-  usaBtn.classList.remove("kitchen-btn-active")
-  asiaBtn.classList.remove("kitchen-btn-active")
-  if (allBtn.classList.contains("kitchen-btn-active")) {
-    allBtn.classList.remove("kitchen-btn-active")
-  } else {
-    allBtn.classList.add("kitchen-btn-active")
+const sortKitchen = (kitchenActiveBtn, kitchenNotActiveBtn1, kitchenNotActiveBtn2, kitchenNotActiveBtn3, message) => {
+  return () => {
+    kitchenActiveBtn.classList.toggle("kitchen-btn-active")
+    kitchenNotActiveBtn1.classList.remove("kitchen-btn-active")
+    kitchenNotActiveBtn2.classList.remove("kitchen-btn-active")
+    kitchenNotActiveBtn3.classList.remove("kitchen-btn-active")
+    main.innerHTML = (`<h3>You pressed the ${message} button!</h3>`)
   }
 }
 
-italyBtn.onclick = () => {
-  allBtn.classList.remove("kitchen-btn-active")
-  usaBtn.classList.remove("kitchen-btn-active")
-  asiaBtn.classList.remove("kitchen-btn-active")
+mexicoBtn.onclick = sortKitchen(mexicoBtn, italyBtn, usaBtn, asiaBtn, mexicoMessage)
+italyBtn.onclick = sortKitchen(italyBtn, usaBtn, asiaBtn, mexicoBtn, italyMessage)
+usaBtn.onclick = sortKitchen(usaBtn, asiaBtn, mexicoBtn, italyBtn, usaMessage)
+asiaBtn.onclick = sortKitchen(asiaBtn, mexicoBtn, italyBtn, usaBtn, asiaMessage)
 
-  usaCard.classList.toggle("hidden")
-  asiaCard.classList.toggle("hidden")
-
-  italyBtn.classList.toggle("kitchen-btn-active")
-}
-
-usaBtn.onclick = () => {
-  allBtn.classList.remove("kitchen-btn-active")
-  italyBtn.classList.remove("kitchen-btn-active")
-  asiaBtn.classList.remove("kitchen-btn-active")
-  italyCard.classList.toggle("hidden")
-  asiaCard.classList.toggle("hidden")
-
-  usaBtn.classList.toggle("kitchen-btn-active")
-}
-
-asiaBtn.onclick = () => {
-  allBtn.classList.remove("kitchen-btn-active")
-  italyBtn.classList.remove("kitchen-btn-active")
-  usaBtn.classList.remove("kitchen-btn-active")
-  italyCard.classList.toggle("hidden")
-  usaCard.classList.toggle("hidden")
-
-  asiaBtn.classList.toggle("kitchen-btn-active")
-}
 
 //* ----- Sort Time --- Manual Fold -----
 
-//* ----- Sort Time Varibles --- Manual Fold -----
+// Varibles  
 const decendBtn = document.querySelector("#decend-btn")
 const acendBtn = document.querySelector("#acend-btn")
+const decendMessage = "decend"
+const acendMessage = "acend"
 
-//* ----- Sort Time Varibles --- Manual Fold -----
-decendBtn.onclick = () => {
-  acendBtn.classList.remove("time-btn-active")
-  if (decendBtn.classList.contains("time-btn-active")) {
-    decendBtn.classList.remove("time-btn-active")
-  } else {
-    decendBtn.classList.add("time-btn-active")
+const sortTime = (timeActiveBtn, timeNotActiveBtn, message) => {
+  return () => {
+    timeActiveBtn.classList.toggle("time-btn-active")
+    timeNotActiveBtn.classList.remove("time-btn-active")
+    main.innerHTML = (`<h3>You pressed the ${message} button!</h3>`)
   }
 }
 
-acendBtn.onclick = () => {
-  decendBtn.classList.remove("time-btn-active")
-  if (acendBtn.classList.contains("time-btn-active")) {
-    acendBtn.classList.remove("time-btn-active")
-  } else {
-    acendBtn.classList.add("time-btn-active")
-  }
-}
+decendBtn.onclick = sortTime(decendBtn, acendBtn, acendMessage)
+acendBtn.onclick = sortTime(acendBtn, decendBtn, decendMessage)
+
+
 
 
 
