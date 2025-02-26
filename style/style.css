@@ -21,6 +21,11 @@ p {
   font-size: clamp(.7rem, 1.2vw, 5rem);
 }
 
+span {
+  margin-left: 0px;
+  margin-right: 0;
+}
+
 ul {
   font-size: clamp(.7rem, 1.2vw, 5rem);
   list-style: none;
@@ -126,6 +131,8 @@ button:hover {
 .food-card-text {
   overflow: hidden;
 }
+
+.food-card-text {}
 
 /** ----- Extra classes --- Manual Fold ----- */
 .hidden {
