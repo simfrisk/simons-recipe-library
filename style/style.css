@@ -188,3 +188,12 @@ button:hover {
     margin: 0;
   }
 }
+
+/** ----- Phone viewport --- Manual Fold ----- */
+@media (max-width: 320px) {
+
+  button {
+    margin: 5px 5px;
+  }
+
+}
