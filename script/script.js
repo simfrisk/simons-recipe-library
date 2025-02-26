@@ -46,7 +46,19 @@ decendBtn.onclick = sortTime(decendBtn, acendBtn, acendMessage)
 acendBtn.onclick = sortTime(acendBtn, decendBtn, decendMessage)
 
 
+//* ----- Click on Recepie --- Manual Fold -----
+
+const italyCard = document.querySelector("#italy-card").onclick = () => {
+  window.location = "https://www.jamieoliver.com/recipes/vegetables-recipes/individual-vegetarian-lasagnes/"
+}
 
 
+//* ----- Darkmode --- Manual Fold -----
 
+const darkModeToggle = document.querySelector("#darkmode-switch")
+const body = document.querySelector("#body")
 
+darkModeToggle.addEventListener("click", () => {
+  console.log("nice")
+  body.classList.toggle("dark-mode")
+})

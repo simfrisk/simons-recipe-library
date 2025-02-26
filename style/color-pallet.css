@@ -45,13 +45,13 @@
   --primary: ;
   --primary-hover: ;
 
-  --secondary-: blue;
+  --secondary: rgb(48, 140, 182);
   --secondary-hover: rgb(30, 30, 245);
 
-  --complementary-: purple;
-  --complementary-hover: rgb(149, 1, 149);
+  --complementary: rgb(46, 107, 72);
+  --complementary-hover: rgb(6, 137, 56);
 
-  --aditional: rgb(35, 36, 44);
+  --aditional: rgb(47, 47, 48);
   --aditional-hover: ;
 
   --body: rgb(23, 26, 32);

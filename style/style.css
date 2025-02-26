@@ -42,6 +42,7 @@ button {
   padding: 10px 15px;
   margin: 5px 10px;
   border-radius: 10px;
+  cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
@@ -98,6 +99,7 @@ button:hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 23%, 340px), 1fr));
   gap: .3em;
+  cursor: pointer;
 }
 
 .recipe-card {
@@ -139,8 +141,12 @@ button:hover {
   display: none;
 }
 
+#darkmode-switch {
+  cursor: pointer;
+}
+
 /** ----- Phone viewport --- Manual Fold ----- */
-@media (max-width: 740px) {
+@media (max-width: 770px) {
 
   /** ----- Basic --- Manual Fold ----- */
   body {
@@ -194,6 +200,7 @@ button:hover {
 
   button {
     margin: 5px 5px;
+    padding: 8px 12px;
   }
 
 }
