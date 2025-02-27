@@ -29,21 +29,33 @@
   <main id="main">
 
     <!--*--- Sort Section --- Manual Fold  ----->
-    <section class="kitchen-sort-container">
-      <div class="kitchen-sort-title">
-        <h2>Filter on kitchen</h2>
-        <button id="mexico-btn" class="kitchen-btn all-btn">Mexican</button>
-        <button id="italy-btn" class="kitchen-btn italy-btn">Italy</button>
-        <button id="usa-btn" class="kitchen-btn us-btn">USA</button>
-        <button id="asia-btn" class="kitchen-btn asia-btn">Asia</button>
-      </div>
 
-      <div class="time-sort-container">
-        <div class="time-sort-title">
-          <h2>Filter on time</h2>
-          <button id="decend-btn" class="time-btn">Decending</button>
-          <button id="acend-btn" class="time-btn">Acending</button>
+    <section class="kitchen-sort-container">
+      <form action="">
+        <div class="kitchen-sort-title">
+          <h2>Filter on kitchen</h2>
+          <fieldset>
+            <button id="mexico-btn" class="kitchen-btn all-btn">Mexican</button>
+            <button id="italy-btn" class="kitchen-btn italy-btn">Italy</button>
+            <button id="usa-btn" class="kitchen-btn us-btn">USA</button>
+            <button id="asia-btn" class="kitchen-btn asia-btn">Asia</button>
+          </fieldset>
         </div>
+
+      </form>
+
+      <form action="">
+
+        <div class="time-sort-container">
+          <div class="time-sort-title">
+            <h2>Sort on time</h2>
+            <fieldset>
+              <button id="decend-btn" class="time-btn">Decending</button>
+              <button id="acend-btn" class="time-btn">Acending</button>
+            </fieldset>
+          </div>
+      </form>
+
     </section>
 
     <section id="temp-placeholder"></section>

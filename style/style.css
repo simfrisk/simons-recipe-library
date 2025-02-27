@@ -46,8 +46,20 @@ button {
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-button:hover {
+/* Hover effect */
+.radio-label:hover {
+  background-color: #a1caf7;
+  color: white;
+}
+
+*/ button:hover {
   transform: scale(1.03);
+}
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
 }
 
 .bold {

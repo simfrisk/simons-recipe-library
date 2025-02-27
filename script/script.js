@@ -5,7 +5,7 @@ const mexicoBtn = document.querySelector("#mexico-btn")
 const italyBtn = document.querySelector("#italy-btn")
 const usaBtn = document.querySelector("#usa-btn")
 const asiaBtn = document.querySelector("#asia-btn")
-const mexicoMessage = "mexico"
+const mexicoMessage = "Mexico"
 const italyMessage = "Italy"
 const usaMessage = "Usa"
 const asiaMessage = "Asia"
@@ -17,6 +17,7 @@ const sortKitchen = (kitchenActiveBtn, kitchenNotActiveBtn1, kitchenNotActiveBtn
     kitchenNotActiveBtn2.classList.remove("kitchen-btn-active")
     kitchenNotActiveBtn3.classList.remove("kitchen-btn-active")
     main.innerHTML = (`<h3>You pressed the ${message} button!</h3>`)
+    event.preventDefault()
   }
 }
 
@@ -39,6 +40,7 @@ const sortTime = (timeActiveBtn, timeNotActiveBtn, message) => {
     timeActiveBtn.classList.toggle("time-btn-active")
     timeNotActiveBtn.classList.remove("time-btn-active")
     main.innerHTML = (`<h3>You pressed the ${message} button!</h3>`)
+    event.preventDefault();
   }
 }
 
