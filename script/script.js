@@ -208,12 +208,22 @@ const renderRecipes = () => {
 
 renderRecipes()
 
-
-
-
 //* ----- Sort on kitchen  --- Manual Fold -----
+// const asiaBtn = document.querySelector("#asia-btn")
+// const mexicoBtn = document.querySelector("#mexico-btn")
+// const italyBtn = document.querySelector("#italy-btn")
+// const usaBtn = document.querySelector("#usa-btn")
 
-const kitchenBtns = document.querySelectorAll(.)
+// const filterRecipes = (cusine, event) => {
+//   event.preventDefault()  // Prevent the default action
+//   const filteredRecipes = recipes.filter(item => item.cuisine === cusine)
+//   console.log("Filtered recipes for cuisine:", cusine)
+// }
+
+// asiaBtn.onclick = filterRecipes("Asia")
+// mexicoBtn.onclick = filterRecipes("Mexican")
+// italyBtn.onclick = filterRecipes("European")
+// usaBtn.onclick = filterRecipes("Mediterranean")
 
 
 //* ----- Sort on Time  --- Manual Fold -----
@@ -221,6 +231,7 @@ const decendBtn = document.querySelector("#decend-btn")
 const acendBtn = document.querySelector("#acend-btn")
 
 const SortOnTimeDecend = (activeBtn, notActiveBtn) => {
+  //!  Why do I need this?
   return (event) => {
     // Overrides the form
     event.preventDefault()
@@ -242,6 +253,7 @@ const SortOnTimeDecend = (activeBtn, notActiveBtn) => {
 
 // Sorting by acending ready in time 
 const SortOnTimeAcend = (activeBtn, notActiveBtn) => {
+  //!  Why do I need this?
   return (event) => {
     // Overrides the form
     event.preventDefault()
@@ -264,3 +276,8 @@ const SortOnTimeAcend = (activeBtn, notActiveBtn) => {
 // calls both sort on time function
 acendBtn.onclick = SortOnTimeAcend(acendBtn, decendBtn)
 decendBtn.onclick = SortOnTimeDecend(decendBtn, acendBtn)
+
+
+
+// renderRecipes(filteredRecipes)  // Render the filtered recipes
+// event.preventDefault()
