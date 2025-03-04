@@ -214,52 +214,45 @@ const acendBtn = document.querySelector("#acend-btn")
 
 const SortOnTimeDecend = (activeBtn, notActiveBtn) => {
   return (event) => {
+    // Overrides the form
     event.preventDefault()
+    // Toggles the button look
     notActiveBtn.classList.remove("time-btn-active")
     activeBtn.classList.toggle("time-btn-active")
-
-    recipes.sort((a, b) => a.readyInMinutes - b.readyInMinutes)
-    decendBtn.addEventListener("click", renderRecipes)
-
+    // If no button is active reset order
+    if (!activeBtn.classList.contains("time-btn-active") && !notActiveBtn.classList.contains("time-btn-active")) {
+      recipes.sort((a, b) => a.id - b.id)
+      // Sorts on decending time
+    } else {
+      recipes.sort((a, b) => a.readyInMinutes - b.readyInMinutes)
+      decendBtn.addEventListener("click", renderRecipes)
+    }
+    // Reloads the Recipies so the order get uppdated
     renderRecipes()
   }
 }
 
+// Sorting by acending ready in time 
 const SortOnTimeAcend = (activeBtn, notActiveBtn) => {
   return (event) => {
+    // Overrides the form
     event.preventDefault()
+    // Toggles the button look
     notActiveBtn.classList.remove("time-btn-active")
     activeBtn.classList.toggle("time-btn-active")
-
-    recipes.sort((a, b) => b.readyInMinutes - a.readyInMinutes)
-    decendBtn.addEventListener("click", renderRecipes)
-
+    // If no button is active reset order
+    if (!activeBtn.classList.contains("time-btn-active") && !notActiveBtn.classList.contains("time-btn-active")) {
+      recipes.sort((a, b) => a.id - b.id)
+      // Sorts on acending time
+    } else {
+      recipes.sort((a, b) => b.readyInMinutes - a.readyInMinutes)
+      decendBtn.addEventListener("click", renderRecipes)
+    }
+    // Reloads the Recipies so the order get uppdated
     renderRecipes()
   }
 }
 
+// calls both sort on time function
 acendBtn.onclick = SortOnTimeAcend(acendBtn, decendBtn)
 decendBtn.onclick = SortOnTimeDecend(decendBtn, acendBtn)
-
-
-
-//* ----- Sort on Time  --- Manual Fold -----
-
-// const decendBtn = document.querySelector("#decend-btn")
-// const acendBtn = document.querySelector("#acend-btn")
-
-// const SortOnTimeDecend = (activeBtn, notActiveBtn) => {
-//   return (event) => {
-//     event.preventDefault()
-//     notActiveBtn.classList.remove("time-btn-active")
-//     activeBtn.classList.toggle("time-btn-active")
-
-//     recipes.sort((a, b) => a.readyInMinutes - b.readyInMinutes)
-//     decendBtn.addEventListener("click", renderRecipes)
-
-//     renderRecipes()
-//   }
-// }
-
-// decendBtn.onclick = SortOnTimeDecend(decendBtn, acendBtn)
-// acendBtn.onclick = SortOnTimeDecend(acendBtn, decendBtn)
