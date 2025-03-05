@@ -125,6 +125,7 @@ strong {
   border-radius: 8px;
   transition: transform ease .4s;
   border: solid 2px transparent;
+  max-width: 550px;
 }
 
 .recipe-card:hover {

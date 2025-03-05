@@ -68,11 +68,34 @@ italyBtn.addEventListener("click", (event) => filterOnKitchen(event, "Italian"))
 asiaBtn.addEventListener("click", (event) => filterOnKitchen(event, "Asian"))
 mediterraneanBtn.addEventListener("click", (event) => filterOnKitchen(event, "Mediterranean"))
 
-
 //* ----- Sort on Time  --- Manual Fold -----
 
 
 
 
 
+
+//! Need to add button highlght
+//! Need to add add deselect on extra click
+// var
+const decendBtn = document.querySelector("#decend-btn")
+const acendBtn = document.querySelector("#acend-btn")
+
+// functions
+const sortOnTimeDecend = (event) => {
+  const sortArray = recipes.sort((a, b) => a.readyInMinutes - b.readyInMinutes)
+  event.preventDefault()
+  renderRecipes(sortArray)
+}
+
+// functions
+const sortOnTimeAcend = (event) => {
+  const sortArray = recipes.sort((a, b) => b.readyInMinutes - a.readyInMinutes)
+  event.preventDefault()
+  renderRecipes(sortArray)
+}
+
+// trigger
+decendBtn.addEventListener("click", sortOnTimeDecend)
+acendBtn.addEventListener("click", sortOnTimeAcend)
 
