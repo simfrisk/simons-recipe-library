@@ -1,11 +1,15 @@
 //* ----- Create recipe cars  --- Manual Fold -----
 const recipesPlaceholder = document.querySelector("#recipes-placeholder")
 
-
-const renderRecipes = (recepieArray) => {
+const renderRecipes = (recipeArray) => {
   recipesPlaceholder.innerHTML = ""
 
-  recepieArray.forEach(recipe => {
+  if (recipeArray.length === 0) {
+    emptySelect()
+    return
+  }
+
+  recipeArray.forEach(recipe => {
 
     const recipeCard = document.createElement("article")
     recipeCard.classList.add("recipe-card")
@@ -48,11 +52,15 @@ const renderRecipes = (recepieArray) => {
 renderRecipes(recipes)
 
 //* ----- Sort on kitchen  --- Manual Fold -----
+// todo: Need to add button highlght
+// todo: to add add deselect on extra click
 // Dom selectors
 const mexicoBtn = document.querySelector("#mexico-btn")
 const italyBtn = document.querySelector("#italy-btn")
 const asiaBtn = document.querySelector("#asia-btn")
 const mediterraneanBtn = document.querySelector("#mediterranean-btn")
+//! Special button for testing 
+const emptyBtn = document.querySelector("#empthy-btn")
 
 // Filter on kitchen function
 const filterOnKitchen = (event, cuisine) => {
@@ -60,6 +68,7 @@ const filterOnKitchen = (event, cuisine) => {
   console.log("hello")
   event.preventDefault()
   renderRecipes(filteredArray)
+
 }
 
 // Event listners for buttons
@@ -67,16 +76,12 @@ mexicoBtn.addEventListener("click", (event) => filterOnKitchen(event, "Mexican")
 italyBtn.addEventListener("click", (event) => filterOnKitchen(event, "Italian"))
 asiaBtn.addEventListener("click", (event) => filterOnKitchen(event, "Asian"))
 mediterraneanBtn.addEventListener("click", (event) => filterOnKitchen(event, "Mediterranean"))
+//! This is a placeholder item
+emptyBtn.addEventListener("click", (event) => filterOnKitchen(event, "empty"))
 
 //* ----- Sort on Time  --- Manual Fold -----
-
-
-
-
-
-
-//! Need to add button highlght
-//! Need to add add deselect on extra click
+// todo: Need to add button highlght
+// todo: to add add deselect on extra click
 // var
 const decendBtn = document.querySelector("#decend-btn")
 const acendBtn = document.querySelector("#acend-btn")
@@ -95,7 +100,28 @@ const sortOnTimeAcend = (event) => {
   renderRecipes(sortArray)
 }
 
-// trigger
+// Event listeners
 decendBtn.addEventListener("click", sortOnTimeDecend)
 acendBtn.addEventListener("click", sortOnTimeAcend)
+
+//* ----- Sort Random  --- Manual Fold -----
+// todo: Need to add button highlght
+// todo: to add add deselect on extra click
+const randomBtn = document.querySelector("#random-btn")
+
+const getRandomRecipe = (event) => {
+  event.preventDefault()
+  const randomIndex = Math.floor(Math.random() * recipes.length)
+  const randomRecipe = [recipes[randomIndex]]
+  renderRecipes(randomRecipe)
+}
+
+randomBtn.addEventListener("click", getRandomRecipe)
+
+//* ----- Empty Selection  --- Manual Fold -----
+const emptySelect = () => {
+  recipesPlaceholder.innerHTML = `
+  <h3>There are no recipes available with these attributes.</h3>`
+}
+
 
