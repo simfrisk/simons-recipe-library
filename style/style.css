@@ -193,13 +193,24 @@ strong {
     border: none;
     background-color: var(--complementary);
     color: var(--secondary);
-    font-size: clamp(.7rem, 1vw, 4rem);
+    font-size: clamp(.9rem, 1vw, 4rem);
     /* padding: 3% 7%; */
-    padding: 10px 15px;
+    padding: 7px 15px;
     margin: 5px 5px;
   }
 
   /** ----- Sort section --- Manual Fold ----- */
+  fieldset {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+  }
+
+  .button-scroll {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+
   .kitchen-sort-container {
     display: flex;
     flex-wrap: wrap;
