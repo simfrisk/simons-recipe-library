@@ -2,8 +2,6 @@
 const recipesPlaceholder = document.querySelector("#recipes-placeholder")
 let recipesData = [] // Store fetched recipes globally
 
-let filteredRecipes = [] // Stores the currently filtered recipes
-
 //
 
 //* ----- Refactor recipe values  --- Manual Fold -----
@@ -35,8 +33,7 @@ const renderRecipes = (recipes) => {
             <strong>Ready in:</strong> ${recipe.readyInMinutes} minutes<br>
             <strong>Servings:</strong> ${recipe.servings}<br>
             <strong>Vegetarian:</strong> ${RefactorVegetarian(recipe)}<br>
-            <strong>Vegan:</strong> ${RefactorVegan(recipe)}<br>
-            <strong>Price per serving:</strong> ${recipe.pricePerServing}<br>
+            <strong>Vegan:</strong> ${RefactorVegan(recipe)}
           </div>
         </div>
       </article>`
@@ -46,20 +43,18 @@ const renderRecipes = (recipes) => {
 
 //* ----- Fetch Api & Render recipes --- Manual Fold -----
 const fetchApiData = () => {
-  fetch(`https://api.spoonacular.com/recipes/random?number=10&apiKey=12a0a82f197747bbaad4be48ff221750`)
+  fetch(`https://api.spoonacular.com/recipes/random?number=10&apiKey=0d04fb7d468f486983bb9dd3fd16b3a0`)
     .then(response => response.json())
     .then(data => {
       // Filter out recipes with empty cuisines
-      recipesData = data.recipes.filter(recipe => recipe.cuisines.length > 0);
-      renderRecipes(recipesData);
+      recipesData = data.recipes.filter(recipe => recipe.cuisines.length > 0)
+      renderRecipes(recipesData)
     })
-    .catch(error => {
-      console.error("Error fetching recipe data:", error);
-      recipesPlaceholder.innerHTML = "<h2>We are out of free recipes, please try again tomorrow!</h2>"; // Display error message to user
-    });
-};
+    .catch(error => console.error("Error fetching recipe data:", error))
 
-fetchApiData();
+}
+
+fetchApiData()
 
 
 
@@ -73,23 +68,17 @@ const timeBtns = [ascendBtn, descendBtn]
 
 const sortOnTimeDescend = (event) => {
   event.preventDefault()
-  const arrayToSort = filteredRecipes.length > 0 ? filteredRecipes : recipesData
-  const sortedArray = [...arrayToSort].sort((a, b) => b.readyInMinutes - a.readyInMinutes)
-
+  const sortedArray = recipesData.sort((a, b) => b.readyInMinutes - a.readyInMinutes)
   timeBtns.forEach(btn => btn.classList.remove("time-btn-active"))
   descendBtn.classList.add("time-btn-active")
-
   renderRecipes(sortedArray)
 }
 
 const sortOnTimeAscend = (event) => {
   event.preventDefault()
-  const arrayToSort = filteredRecipes.length > 0 ? filteredRecipes : recipesData
-  const sortedArray = [...arrayToSort].sort((a, b) => a.readyInMinutes - b.readyInMinutes)
-
+  const sortedArray = recipesData.sort((a, b) => a.readyInMinutes - b.readyInMinutes)
   timeBtns.forEach(btn => btn.classList.remove("time-btn-active"))
   ascendBtn.classList.add("time-btn-active")
-
   renderRecipes(sortedArray)
 }
 
@@ -116,7 +105,7 @@ const cusineBtns = [mexicoBtn, italyBtn, asiaBtn, americanBtn, europeBtn, medite
 const filterOnKitchen = (event, cuisine, activeBtn) => {
   event.preventDefault()
 
-  filteredRecipes = recipesData.filter(recipe => recipe.cuisines.includes(cuisine))
+  const filteredArray = recipesData.filter(recipe => recipe.cuisines.includes(cuisine))
 
   // Remove active class from all buttons
   cusineBtns.forEach(btn => btn.classList.remove("kitchen-btn-active"))
@@ -124,7 +113,7 @@ const filterOnKitchen = (event, cuisine, activeBtn) => {
   // Toggle the active class only for the clicked button
   activeBtn.classList.add("kitchen-btn-active")
 
-  renderRecipes(filteredRecipes)
+  renderRecipes(filteredArray)
 }
 
 // Event listeners for buttons
@@ -177,31 +166,6 @@ searchSubmit.addEventListener("click", searchForRecipe)
 
 //
 
-//* ----- Filter: Price per servning --- Manual Fold -----
+// testing 
 
-const priceSlider = document.querySelector("#price-slider");
-const priceOutput = document.querySelector("#price-output");
-
-priceOutput.textContent = `${priceSlider.value} sek` // Set initial slider value
-
-const pricePerServing = () => {
-  priceOutput.textContent = `${priceSlider.value} sek`; // Update displayed price
-
-  const maxPrice = Number(priceSlider.value); // Get the selected price
-
-  // Always filter from `recipesData` to avoid losing recipes when sliding back up
-  filteredRecipes = recipesData.filter(recipe => recipe.pricePerServing >= maxPrice);
-
-  renderRecipes(filteredRecipes); // Display the filtered recipes
-};
-
-priceSlider.addEventListener("input", pricePerServing);
-
-
-
-// TODO
-// todo: Make a all button or generate new Recipeies
-// todo: Make a ranged slider with "price per serving
-// todo: Make CSS better
-// todo: Hide slider in CSS
-// todo: BONUS: Make a filtered dropdown for buttons on mobile 
+// const testContainer = document.querySelector("#testContainer") 
