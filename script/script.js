@@ -9,7 +9,7 @@ let filteredRecipes = [] // Stores the currently filtered recipes
 //* ----- Refactor recipe values  --- Manual Fold -----
 const refactorVegetarian = (recipe) => (recipe.vegetarian ? "Yes" : "No")
 const refactorVegan = (recipe) => (recipe.vegan ? "Yes" : "No")
-const refactorPricePerServing = (recipe) => parseFloat((recipe.pricePerServing / 10).toFixed(1));
+const refactorPricePerServing = (recipe) => parseFloat((recipe.pricePerServing / 6).toFixed(0));
 
 //
 
