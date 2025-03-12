@@ -7,8 +7,9 @@ let filteredRecipes = [] // Stores the currently filtered recipes
 //
 
 //* ----- Refactor recipe values  --- Manual Fold -----
-const RefactorVegetarian = (recipe) => (recipe.vegetarian ? "Yes" : "No")
-const RefactorVegan = (recipe) => (recipe.vegan ? "Yes" : "No")
+const refactorVegetarian = (recipe) => (recipe.vegetarian ? "Yes" : "No")
+const refactorVegan = (recipe) => (recipe.vegan ? "Yes" : "No")
+const refactorPricePerServing = (recipe) => parseFloat((recipe.pricePerServing / 10).toFixed(1));
 
 //
 
@@ -34,9 +35,9 @@ const renderRecipes = (recipes) => {
             <strong>cuisines:</strong> ${recipe.cuisines}<br>
             <strong>Ready in:</strong> ${recipe.readyInMinutes} minutes<br>
             <strong>Servings:</strong> ${recipe.servings}<br>
-            <strong>Vegetarian:</strong> ${RefactorVegetarian(recipe)}<br>
-            <strong>Vegan:</strong> ${RefactorVegan(recipe)}<br>
-            <strong>Price per serving:</strong> ${recipe.pricePerServing}<br>
+            <strong>Vegetarian:</strong> ${refactorVegetarian(recipe)}<br>
+            <strong>Vegan:</strong> ${refactorVegan(recipe)}<br>
+            <strong>Price per serving:</strong> ${refactorPricePerServing(recipe)}<br>
           </div>
         </div>
       </article>`
@@ -44,24 +45,24 @@ const renderRecipes = (recipes) => {
   })
 }
 
+//
+
 //* ----- Fetch Api & Render recipes --- Manual Fold -----
 const fetchApiData = () => {
-  fetch(`https://api.spoonacular.com/recipes/random?number=10&apiKey=12a0a82f197747bbaad4be48ff221750`)
+  fetch(`https://api.spoonacular.com/recipes/random?number=30&apiKey=12a0a82f197747bbaad4be48ff221750`)
     .then(response => response.json())
     .then(data => {
       // Filter out recipes with empty cuisines
-      recipesData = data.recipes.filter(recipe => recipe.cuisines.length > 0);
-      renderRecipes(recipesData);
+      recipesData = data.recipes.filter(recipe => recipe.cuisines.length > 0)
+      renderRecipes(recipesData)
     })
     .catch(error => {
-      console.error("Error fetching recipe data:", error);
-      recipesPlaceholder.innerHTML = "<h2>We are out of free recipes, please try again tomorrow!</h2>"; // Display error message to user
-    });
-};
+      console.error("Error fetching recipe data:", error)
+      recipesPlaceholder.innerHTML = "<h2>We are out of free recipes, please try again tomorrow!</h2>" // Display error message to user
+    })
+}
 
-fetchApiData();
-
-
+fetchApiData()
 
 //
 
@@ -179,29 +180,32 @@ searchSubmit.addEventListener("click", searchForRecipe)
 
 //* ----- Filter: Price per servning --- Manual Fold -----
 
-const priceSlider = document.querySelector("#price-slider");
-const priceOutput = document.querySelector("#price-output");
+const priceSlider = document.querySelector("#price-slider")
+const priceOutput = document.querySelector("#price-output")
 
 priceOutput.textContent = `${priceSlider.value} sek` // Set initial slider value
 
-const pricePerServing = () => {
-  priceOutput.textContent = `${priceSlider.value} sek`; // Update displayed price
+// Update the filter for price per serving
+const filterByPrice = () => {
+  priceOutput.textContent = `${priceSlider.value} sek` // Update displayed price
 
-  const maxPrice = Number(priceSlider.value); // Get the selected price
+  const maxPrice = Number(priceSlider.value) // Get the selected price
 
   // Always filter from `recipesData` to avoid losing recipes when sliding back up
-  filteredRecipes = recipesData.filter(recipe => recipe.pricePerServing >= maxPrice);
+  filteredRecipes = recipesData.filter(recipe => refactorPricePerServing(recipe) <= maxPrice)
 
-  renderRecipes(filteredRecipes); // Display the filtered recipes
-};
+  renderRecipes(filteredRecipes) // Display the filtered recipes
+}
 
-priceSlider.addEventListener("input", pricePerServing);
+// Event listener for price slider input
+priceSlider.addEventListener("input", filterByPrice)
 
+//
 
 
 // TODO
+// todo: Make a ranged slider combine with other functions"
 // todo: Make a all button or generate new Recipeies
-// todo: Make a ranged slider with "price per serving
 // todo: Make CSS better
 // todo: Hide slider in CSS
 // todo: BONUS: Make a filtered dropdown for buttons on mobile 
