@@ -1,19 +1,19 @@
-//* ----- Main Const  --- Manual Fold -----
+//#region --- Main Const  ----- 
 const recipesPlaceholder = document.querySelector("#recipes-placeholder")
 let recipesData = [] // Store fetched recipes globally
 
 let filteredRecipes = [] // Stores the currently filtered recipes
 
-//
+//#endregion
 
-//* ----- Refactor recipe values  --- Manual Fold -----
+//#region --- Refactor recipe  -----
 const refactorVegetarian = (recipe) => (recipe.vegetarian ? "Yes" : "No")
 const refactorVegan = (recipe) => (recipe.vegan ? "Yes" : "No")
 const refactorPricePerServing = (recipe) => parseFloat((recipe.pricePerServing / 6).toFixed(0));
 
-//
+//#endregion
 
-//* ----- Render recipes  --- Manual Fold -----
+//#region --- Render recipes  -----
 const renderRecipes = (recipes) => {
   recipesPlaceholder.innerHTML = ""
 
@@ -41,32 +41,35 @@ const renderRecipes = (recipes) => {
           </div>
         </div>
       </article>`
-    console.log(recipesData)
   })
 }
 
-//
+//#endregion
 
-//* ----- Fetch Api & Render recipes --- Manual Fold -----
+//#region --- Fetch Api & Render recipes  -----
+const baseUrl = "https://api.spoonacular.com/recipes/random?number=10"
+const apiKey = "12a0a82f197747bbaad4be48ff221750"
 const fetchApiData = () => {
-  fetch(`https://api.spoonacular.com/recipes/random?number=30&apiKey=12a0a82f197747bbaad4be48ff221750`)
+  fetch(`${baseUrl}&apiKey=${apiKey}`)
     .then(response => response.json())
     .then(data => {
       // Filter out recipes with empty cuisines
-      recipesData = data.recipes.filter(recipe => recipe.cuisines.length > 0)
+      recipesData = data.recipes || backupRecepies().recipes
+      recipesData = recipesData.filter(recipe => recipe.cuisines.length > 0)
       renderRecipes(recipesData)
     })
     .catch(error => {
       console.error("Error fetching recipe data:", error)
-      recipesPlaceholder.innerHTML = "<h2>We are out of free recipes, please try again tomorrow!</h2>" // Display error message to user
+      recipesPlaceholder.innerHTML = "<h2>We are out of free recipes, please try again tomorrow!</h2>"
+
     })
 }
 
 fetchApiData()
 
-//
+//#endregion
 
-//* ----- Sort on Time  --- Manual Fold -----
+//#region --- Sort on Time  -----
 // Variables
 const descendBtn = document.querySelector("#descend-btn")
 const ascendBtn = document.querySelector("#ascend-btn")
@@ -97,9 +100,9 @@ const sortOnTimeAscend = (event) => {
 descendBtn.addEventListener("click", sortOnTimeDescend)
 ascendBtn.addEventListener("click", sortOnTimeAscend)
 
-//
+//#endregion
 
-//* ----- Sort on kitchen  --- Manual Fold -----
+//#region --- Sort on kitchen  -----
 // Dom selectors
 const mexicoBtn = document.querySelector("#mexico-btn")
 const italyBtn = document.querySelector("#italy-btn")
@@ -137,9 +140,9 @@ europeBtn.addEventListener("click", (event) => filterOnKitchen(event, "European"
 mediterraneanBtn.addEventListener("click", (event) => filterOnKitchen(event, "Mediterranean", mediterraneanBtn))
 emptyBtn.addEventListener("click", (event) => filterOnKitchen(event, "empty", emptyBtn))
 
-//
+//#endregion
 
-//* ----- Sort Random  --- Manual Fold -----
+//#region --- Sort Random  -----
 
 const randomBtn = document.querySelector("#random-btn")
 
@@ -152,9 +155,9 @@ const getRandomRecipe = (event) => {
 
 randomBtn.addEventListener("click", getRandomRecipe)
 
-//
+//#endregion
 
-//* ----- Search for recipe --- Manual Fold -----
+//#region --- Search for recipe  -----
 
 const searchInput = document.querySelector("#search")
 const searchSubmit = document.querySelector("button[type='submit']")
@@ -176,9 +179,9 @@ const searchForRecipe = (event) => {
 
 searchSubmit.addEventListener("click", searchForRecipe)
 
-//
+//#endregion
 
-//* ----- Filter: Price per servning --- Manual Fold -----
+//#region --- Filter: Price per servning  -----
 
 const priceSlider = document.querySelector("#price-slider")
 const priceOutput = document.querySelector("#price-output")
@@ -200,12 +203,33 @@ const filterByPrice = () => {
 // Event listener for price slider input
 priceSlider.addEventListener("input", filterByPrice)
 
-//
+//#endregion
+
+// //#region --- Update recepies on scroll  -----
+
+// const moreRecipesBtn = document.querySelector("#more-recipes-btn")
+// const recipesPlaceholderRenew = document.querySelector("#recipes-placeholder-renew")
+
+// const loadMoreRecipies = (renderRecipes,) => {
+//   fetchApiData()
+
+// }
+
+// moreRecipesBtn.addEventListener("click", loadMoreRecipies)
 
 
+// //#endregion
+
+
+//#region --- TODO -----
 // TODO
+// todo: Make 30 template recepies and throw them in on Error
 // todo: Make a ranged slider combine with other functions"
 // todo: Make a all button or generate new Recipeies
+// todo: Skip broken images on load
 // todo: Make CSS better
 // todo: Hide slider in CSS
-// todo: BONUS: Make a filtered dropdown for buttons on mobile 
+// todo: BONUS: Make a filtered dropdown for buttons on mobile i
+// todo: BONUS: Make a like button for local storage
+
+//#endregion

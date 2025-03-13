@@ -1,4 +1,4 @@
-/** ----- Basic --- Manual Fold ----- */
+/* #region ----- Basic ----- */
 * {
   box-sizing: border-box;
   margin: 5px;
@@ -70,9 +70,9 @@ strong {
   font-weight: bolder;
 }
 
-/*
+/* #endregion */
 
-/** ----- Sort section --- Manual Fold ----- */
+/* #region ----- Sort section ----- */
 .kitchen-sort-container {
   display: flex;
   flex-wrap: wrap;
@@ -112,9 +112,9 @@ strong {
   border: solid 2px var(--tri-hover);
 }
 
-/*
+/* #endregion */
 
-/** ----- Recipe section --- Manual Fold ----- */
+/* #region ----- Recipe section ----- */
 .recipe-card-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 23%, 340px), 1fr));
@@ -160,9 +160,9 @@ strong {
 
 .food-card-text {}
 
-/*
+/* #endregion */
 
-/** ----- Extra classes --- Manual Fold ----- */
+/* #region ----- Extra classes ----- */
 .hidden {
   display: none;
 }
@@ -171,12 +171,12 @@ strong {
   cursor: pointer;
 }
 
-/*
+/* #endregion */
 
-/** ----- Phone viewport --- Manual Fold ----- */
+/* #region ----- Phone viewport ----- */
 @media (max-width: 900px) {
 
-  /** ----- Basic --- Manual Fold ----- */
+  /* #region ----- Basic --- Manual Fold ----- */
   body {
     margin: 20px 0 0 0;
   }
@@ -196,9 +196,9 @@ strong {
     margin: 5px 5px;
   }
 
-  /*
+  /* #endregion */
 
-  /** ----- Sort section --- Manual Fold ----- */
+  /* #region ----- Sort section --- Manual Fold ----- */
   fieldset {
     display: flex;
     overflow-x: scroll;
@@ -217,9 +217,9 @@ strong {
     margin: 0 0 0 0;
   }
 
-  /*
+  /* #endregion */
 
-  /** ----- Recipe section --- Manual Fold ----- */
+  /* #region ----- Recipe section --- Manual Fold ----- */
   .recipe-card {
     padding: 10px;
   }
@@ -238,20 +238,20 @@ strong {
     margin: 0;
   }
 
-  /*
+  /* #endregion */
 
 }
 
-/*
+/* #endregion */
 
-/** ----- Small Phone viewport --- Manual Fold ----- */
-  @media (max-width: 320px) {
+/* #region ----- Small Phone viewport ----- */
+@media (max-width: 320px) {
 
-    button {
-      margin: 5px 5px;
-      padding: 8px 12px;
-    }
-
+  button {
+    margin: 5px 5px;
+    padding: 8px 12px;
   }
 
-  /*
+}
+
+/* #endregion */
