@@ -1,6 +1,7 @@
 //#region --- Main Const  ----- 
 const recipesPlaceholder = document.querySelector("#recipes-placeholder")
 let recipesData = [] // Store fetched recipes globally
+// let fetchNewRecepiesData
 
 let filteredRecipes = [] // Stores the currently filtered recipes
 
@@ -46,8 +47,8 @@ const renderRecipes = (recipes) => {
 
 //#endregion
 
-//#region --- Fetch Api & Render recipes  -----
-const baseUrl = "https://api.spoonacular.com/recipes/random?number=10"
+//#region --- Fetch Api  -----
+const baseUrl = "https://api.spoonacular.com/recipes/random?number=30"
 const apiKey = "12a0a82f197747bbaad4be48ff221750"
 const fetchApiData = () => {
   fetch(`${baseUrl}&apiKey=${apiKey}`)
