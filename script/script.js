@@ -1,7 +1,7 @@
 //#region --- Main Const  ----- 
 const recipesPlaceholder = document.querySelector("#recipes-placeholder")
 let recipesData = [] // Store fetched recipes globally
-// let fetchNewRecepiesData
+let fetchNewRecepiesData
 
 let filteredRecipes = [] // Stores the currently filtered recipes
 
@@ -14,9 +14,17 @@ const refactorPricePerServing = (recipe) => parseFloat((recipe.pricePerServing /
 
 //#endregion
 
+//#region --- Clear inner HTML  -----
+
+const clearContent = () => {
+  recipesPlaceholder.innerHTML = ""
+}
+
+
+//#endregion 
+
 //#region --- Render recipes  -----
 const renderRecipes = (recipes) => {
-  recipesPlaceholder.innerHTML = ""
 
   if (recipes.length === 0) {
     recipesPlaceholder.innerHTML = "<h2>There are no recipes available with these attributes.</h2>"
@@ -56,8 +64,9 @@ const fetchApiData = () => {
     .then(data => {
       // Filter out recipes with empty cuisines
       recipesData = data.recipes || backupRecepies().recipes
-      recipesData = recipesData.filter(recipe => recipe.cuisines.length > 0)
+      recipesData = recipesData.filter(recipe => recipe.cuisines.length > 0 && recipe.image)
       renderRecipes(recipesData)
+
     })
     .catch(error => {
       console.error("Error fetching recipe data:", error)
@@ -67,6 +76,7 @@ const fetchApiData = () => {
 }
 
 fetchApiData()
+clearContent()
 
 //#endregion
 
@@ -84,6 +94,7 @@ const sortOnTimeDescend = (event) => {
   timeBtns.forEach(btn => btn.classList.remove("time-btn-active"))
   descendBtn.classList.add("time-btn-active")
 
+  clearContent()
   renderRecipes(sortedArray)
 }
 
@@ -95,6 +106,7 @@ const sortOnTimeAscend = (event) => {
   timeBtns.forEach(btn => btn.classList.remove("time-btn-active"))
   ascendBtn.classList.add("time-btn-active")
 
+  clearContent()
   renderRecipes(sortedArray)
 }
 
@@ -129,6 +141,7 @@ const filterOnKitchen = (event, cuisine, activeBtn) => {
   // Toggle the active class only for the clicked button
   activeBtn.classList.add("kitchen-btn-active")
 
+  clearContent()
   renderRecipes(filteredRecipes)
 }
 
@@ -151,6 +164,7 @@ const getRandomRecipe = (event) => {
   event.preventDefault()
   const randomIndex = Math.floor(Math.random() * recipesData.length)
   const randomRecipe = [recipesData[randomIndex]]
+  clearContent()
   renderRecipes(randomRecipe)
 }
 
@@ -172,6 +186,7 @@ const searchForRecipe = (event) => {
   )
 
   if (filteredRecipes.length > 0) {
+    clearContent()
     renderRecipes(filteredRecipes) // Show matching recipes
   } else {
     recipesPlaceholder.innerHTML = "<h2>No recipes found.</h2>"
@@ -198,6 +213,7 @@ const filterByPrice = () => {
   // Always filter from `recipesData` to avoid losing recipes when sliding back up
   filteredRecipes = recipesData.filter(recipe => refactorPricePerServing(recipe) <= maxPrice)
 
+  clearContent()
   renderRecipes(filteredRecipes) // Display the filtered recipes
 }
 
@@ -206,31 +222,30 @@ priceSlider.addEventListener("input", filterByPrice)
 
 //#endregion
 
-// //#region --- Update recepies on scroll  -----
+//#region --- Update recepies on scroll  -----
 
-// const moreRecipesBtn = document.querySelector("#more-recipes-btn")
+const moreRecipesBtn = document.querySelector("#more-recipes-btn")
 // const recipesPlaceholderRenew = document.querySelector("#recipes-placeholder-renew")
 
-// const loadMoreRecipies = (renderRecipes,) => {
-//   fetchApiData()
+const loadMoreRecipies = (renderRecipes,) => {
+  fetchApiData()
 
-// }
+}
 
-// moreRecipesBtn.addEventListener("click", loadMoreRecipies)
+moreRecipesBtn.addEventListener("click", loadMoreRecipies)
 
-
-// //#endregion
-
+//#endregion
 
 //#region --- TODO -----
 // TODO
-// todo: Make 30 template recepies and throw them in on Error
-// todo: Make a ranged slider combine with other functions"
-// todo: Make a all button or generate new Recipeies
-// todo: Skip broken images on load
-// todo: Make CSS better
-// todo: Hide slider in CSS
-// todo: BONUS: Make a filtered dropdown for buttons on mobile i
-// todo: BONUS: Make a like button for local storage
+// [x] Make 30 template recipes and throw them in on Error  
+// [] Make a ranged slider combine with other functions  
+// [] Make a load more recepies combine with other functions  
+// [] Make an "All" button or generate new recipes  
+// [] Skip broken images on load  
+// [] Improve CSS styling  
+// [] Hide slider in CSS  
+// [] BONUS: Create a filtered dropdown for buttons on mobile  
+// [] BONUS: Implement a like button using local storage  
 
 //#endregion
