@@ -242,10 +242,10 @@ moreRecipesBtn.addEventListener("click", loadMoreRecipies)
 // [] Make a ranged slider combine with other functions  
 // [] Make a load more recepies combine with other functions  
 // [] Make an "All" button or generate new recipes  
-// [] Skip broken images on load  
-// [] Improve CSS styling  
+//! [x] Skip broken images on load  (Why does this not work?)
+// [x] Improve CSS styling  
 // [] Hide slider in CSS  
-// [] BONUS: Create a filtered dropdown for buttons on mobile  
-// [] BONUS: Implement a like button using local storage  
+// [-] BONUS: Create a filtered dropdown for buttons on mobile  
+// [-] BONUS: Implement a like button using local storage  
 
 //#endregion
