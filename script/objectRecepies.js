@@ -1,7 +1,7 @@
 // 20250313133537
 // https://api.spoonacular.com/recipes/random?number=30&apiKey=12a0a82f197747bbaad4be48ff221750
 
-const backupRecepies = () => {
+const backupRecipes = () => {
   return {
     recipes: [
       {

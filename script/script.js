@@ -59,7 +59,7 @@ const fetchApiData = () => {
     .then(response => response.json())
     .then(data => {
       // Uses local storage if API does not function or is full
-      recipesData = data.recipes || backupRecepies().recipes
+      recipesData = data.recipes || backupRecipes().recipes
       // Filter out recipes with empty cuisines 
       recipesData = recipesData.filter(recipe => recipe.cuisines.length > 0 && recipe.image && recipe.image !== "" && recipe.title)
       renderRecipes(recipesData)
