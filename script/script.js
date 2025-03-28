@@ -125,6 +125,7 @@ const filterOnKitchen = (event, cuisine, activeBtn) => {
   filteredRecipes = recipesData.filter(recipe => recipe.cuisines.includes(cuisine))
   cusineBtns.forEach(btn => btn.classList.remove("kitchen-btn-active"))
   activeBtn.classList.add("kitchen-btn-active")
+  selectAllBtn.classList.remove("kitchen-btn-active")
 
   clearContent()
   renderRecipes(filteredRecipes)
@@ -153,6 +154,21 @@ const getRandomRecipe = (event) => {
 randomBtn.addEventListener("click", getRandomRecipe)
 
 //#endregion
+
+//#region --- Select all btn ----
+
+const selectAllBtn = document.querySelector("#select-all-btn")
+
+const selectAllRecepies = (event) => {
+  event.preventDefault()
+  renderRecipes(recipesData)
+  cusineBtns.forEach(btn => btn.classList.remove("kitchen-btn-active"))
+  selectAllBtn.classList.add("kitchen-btn-active")
+}
+
+selectAllBtn.addEventListener("click", selectAllRecepies)
+
+//#endregion 
 
 //#region --- Search for recipe -----
 const searchInput = document.querySelector("#search")
