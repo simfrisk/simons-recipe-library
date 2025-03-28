@@ -54,22 +54,36 @@ const renderRecipes = (recipes) => {
 //#region --- Fetch Api -----
 const baseUrl = "https://api.spoonacular.com/recipes/random?number=30"
 const apiKey = "5ae255282a9f4e2aaf47dbc4e205c58b"
+const CACHE_KEY = "cachedRecipes"
+const CACHE_EXPIRATION = 24 * 60 * 60 * 1000 // Cache expires in 24 hours
+
 const fetchApiData = () => {
-  fetch(`${baseUrl}&apiKey=${apiKey}`)
-    .then(response => response.json())
-    .then(data => {
-      // Uses local storage if API does not function or is full
-      recipesData = data.recipes || backupRecipes().recipes
-      // Filter out recipes with empty cuisines 
-      recipesData = recipesData.filter(recipe => recipe.cuisines.length > 0 && recipe.image && recipe.image !== "" && recipe.title)
-      renderRecipes(recipesData)
+  const cachedData = localStorage.getItem(CACHE_KEY)
+  const cachedTimestamp = localStorage.getItem(`${CACHE_KEY}_timestamp`)
 
-    })
-    .catch(error => {
-      console.error("Error fetching recipe data:", error)
-      recipesPlaceholder.innerHTML = "<h2>We are out of free recipes, please try again tomorrow!</h2>"
+  if (cachedData && cachedTimestamp && (Date.now() - cachedTimestamp < CACHE_EXPIRATION)) {
+    console.log("Using cached data")
+    recipesData = JSON.parse(cachedData)
+    renderRecipes(recipesData)
+  } else {
+    console.log("Fetching new data from API...")
+    fetch(`${baseUrl}&apiKey=${apiKey}`)
+      .then(response => response.json())
+      .then(data => {
+        recipesData = data.recipes || backupRecipes().recipes
+        recipesData = recipesData.filter(recipe => recipe.cuisines.length > 0 && recipe.image && recipe.title)
 
-    })
+        // Save to localStorage
+        localStorage.setItem(CACHE_KEY, JSON.stringify(recipesData))
+        localStorage.setItem(`${CACHE_KEY}_timestamp`, Date.now())
+
+        renderRecipes(recipesData)
+      })
+      .catch(error => {
+        console.error("Error fetching recipe data:", error)
+        recipesPlaceholder.innerHTML = "<h2>We are out of free recipes, please try again tomorrow!</h2>"
+      })
+  }
 }
 
 fetchApiData()
@@ -224,3 +238,9 @@ const loadMoreRecipesOnScroll = () => {
 window.addEventListener('scroll', loadMoreRecipesOnScroll)
 
 //#endregion
+
+
+window.addEventListener("load", () => {
+  clearContent(); // Clear previous content
+  renderRecipes(recipesData); // Show all recipes
+});

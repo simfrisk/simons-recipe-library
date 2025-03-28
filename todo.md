@@ -1,7 +1,7 @@
+[] Filter sort on Infinity
 [X] All btn
 [X] Italy bug (Clear the DOM)
-[] Filter sort on Infinity
-[] width on the descriptive text next to the range slider,
-[] backupRecepies Spelling
-[] Explain recepie
-[] Local Storage Explain
+[X] Range slider - (I want it like this)
+[X] backupRecepies Spelling (Fixed)
+[X] Explain recepie
+[X] Local Storage Explain
